@@ -1,7 +1,4 @@
-#include "motor.h"
-
 #include <HCSR04.h>
-
 
 #define enableDebugOn
 
@@ -13,15 +10,12 @@
 
 #define pinTriggerUltrasonicCensor1 7
 #define pinEchoUltrasonicCensor1 8
-#define pinTriggerUltrasonicCensor2 9
-#define pinEchoUltrasonicCensor2 10
+//#define pinTriggerUltrasonicCensor2 9
+//#define pinEchoUltrasonicCensor2 10
 
 
 HCSR04 s1(pinTriggerUltrasonicCensor1, pinEchoUltrasonicCensor1);
-HCSR04 s2(pinTriggerUltrasonicCensor2, pinEchoUltrasonicCensor2);
-
-Motor motor;
-
+//HCSR04 s2(pinTriggerUltrasonicCensor2, pinEchoUltrasonicCensor2);
 
 void setup()
 {
@@ -83,19 +77,19 @@ void loop()
   DriveForward();
   Serial.print("S1 - ");
   Serial.println(s1.dist());
-  Serial.print("S2 - ");
-  Serial.println(s2.dist());
+//  Serial.print("S2 - ");
+//  Serial.println(s2.dist());
   
   if(s1.dist() <= 20 && s1.dist() >= 5 && s1.dist() != 0)
   {
     StopDriving();
     SteerRight(275);
   }
-
-  if(s2.dist() <= 20 && s2.dist() >= 5 && s2.dist() != 0)
-  {
-    StopDriving();
-    SteerLeft(275);
-  }
+//
+//  if(s2.dist() <= 20 && s2.dist() >= 5 && s2.dist() != 0)
+//  {
+//    StopDriving();
+//    SteerLeft(275);
+//  }
   
 }
